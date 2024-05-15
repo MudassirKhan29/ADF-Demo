@@ -5,20 +5,14 @@
 			"referenceName": "LS_ADLS_eyadfstorageacc",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"FileNameDS": {
-				"type": "string"
-			}
+		"folder": {
+			"name": "Copy"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().FileNameDS",
-					"type": "Expression"
-				},
 				"folderPath": "user-profiles/raw",
 				"fileSystem": "adf-container"
 			},

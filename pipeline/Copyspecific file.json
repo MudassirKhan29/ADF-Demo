@@ -1,5 +1,5 @@
 {
-	"name": "CopyDatafromRawToOutput",
+	"name": "Copyspecific file",
 	"properties": {
 		"activities": [
 			{
@@ -19,7 +19,7 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
+							"fileListPath": "adf-container/user-profiles/Filenames.txt",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -51,17 +51,9 @@
 				]
 			}
 		],
-		"parameters": {
-			"FileNameDP": {
-				"type": "string",
-				"defaultValue": "users_002.csv"
-			}
-		},
 		"folder": {
 			"name": "Copy Activity"
 		},
-		"annotations": [],
-		"lastPublishTime": "2024-05-14T06:27:33Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }
