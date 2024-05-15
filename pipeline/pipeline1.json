@@ -1,0 +1,64 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Radius",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Radius",
+					"value": "10"
+				}
+			},
+			{
+				"name": "Area of circle",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Radius",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Area of circle",
+					"value": {
+						"value": "@{mul(pipeline().parameters.Pi,mul(int(variables('Radius')),int(variables('Radius'))))}",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"Pi": {
+				"type": "float",
+				"defaultValue": 3.14
+			}
+		},
+		"variables": {
+			"Radius": {
+				"type": "String",
+				"defaultValue": "3.14"
+			},
+			"Area of circle": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Copy Activity/Set variable"
+		},
+		"annotations": []
+	}
+}
