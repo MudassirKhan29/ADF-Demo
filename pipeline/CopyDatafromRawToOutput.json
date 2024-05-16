@@ -40,7 +40,13 @@
 				"inputs": [
 					{
 						"referenceName": "DS_ADSL_adf_container_user_profiles_raw",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileNameDS": {
+								"value": "@pipeline().parameters.FileNameDP",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -56,9 +62,6 @@
 				"type": "string",
 				"defaultValue": "users_002.csv"
 			}
-		},
-		"folder": {
-			"name": "Copy Activity"
 		},
 		"annotations": [],
 		"lastPublishTime": "2024-05-14T06:27:33Z"
